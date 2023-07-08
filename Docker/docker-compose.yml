@@ -1,0 +1,14 @@
+version: '3.1'
+
+services:
+  mongo-db-service:
+    image: mongo:7.0.0-rc6 #Version this tag can support Windows/AMD64 and Linux/AMD64
+    container_name: mongo-db-service
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=HauEm
+      - MONGO_INITDB_ROOT_PASSWORD=PasswordTest@123456
+    ports:
+      - "27071:27017" # hostPort:containerPort
+    volumes:
+      - ./db/mongo:/var
