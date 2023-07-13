@@ -6,10 +6,8 @@ services:
     container_name: mongo-db-service
     restart: always
     environment:
-      # - MONGO_INITDB_DATABASE=FinManageApp
-      #   - MONGO_INITDB_ROOT_USERNAME=HauEm
-      #   - MONGO_INITDB_ROOT_PASSWORD=PasswordTest
-
+      - MONGO_INITDB_ROOT_USERNAME=hauem
+      - MONGO_INITDB_ROOT_PASSWORD=passwordTest
     ports:
       - "27071:27017" # hostPort:containerPort
     volumes:
