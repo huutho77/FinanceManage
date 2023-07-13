@@ -6,9 +6,30 @@ services:
     container_name: mongo-db-service
     restart: always
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=HauEm
-      - MONGO_INITDB_ROOT_PASSWORD=PasswordTest@123456
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_DB_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_DB_PASSWORD}
     ports:
       - "27071:27017" # hostPort:containerPort
     volumes:
-      - ./db/mongo:/var
+      - ./db/mongo:/data/db
+    networks:
+      - mongo-database-express
+  mongo-express-service:
+    image: mongo-express
+    container_name: mongo-express-service
+    restart: always
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongo-db-service
+      - ME_CONFIG_BASICAUTH_USERNAME=${MONGOEXPRESS_USERNAME}
+      - ME_CONFIG_BASICAUTH_PASSWORD=${MONGOEXPRESS_PASSWORD}
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=${MONGO_DB_USERNAME}
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=${MONGO_DB_PASSWORD}
+    ports:
+      - "8888:8081"
+    networks:
+      - mongo-database-express
+    depends_on:
+      - mongo-db-service
+networks:
+  mongo-database-express:
+    driver: bridge
