@@ -20,4 +20,10 @@ public class UserModel
 
     [BsonElement("lastname")]
     public string LastName { get; set; } = String.Empty;
+
+    [BsonElement("created_at")]
+    public DateTime CreatedDate { get; set; } = DateTime.Today;
+
+    [BsonElement("udpated_at")]
+    public DateTime UpdatedDate { get; set; } = DateTime.Today;
 }
