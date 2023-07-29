@@ -1,3 +1,4 @@
+using FinManageAPI.Database.DTOs;
 using FinManageAPI.Database.Model;
 
 namespace FinManageAPI.Repositories;
@@ -5,5 +6,5 @@ namespace FinManageAPI.Repositories;
 public interface IUserRepository
 {
     Task<UserModel> GetByIdAsync(string id);
-    Task CreateNewPeopleAsync(UserModel newUser);
+    Task CreateNewUserAsync(CreateUserDTO newUserDTO);
 }

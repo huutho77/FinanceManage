@@ -2,8 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 
 using FinManageAPI.Repositories;
 using FinManageAPI.Database.Model;
-
-using Newtonsoft.Json;
+using FinManageAPI.Database.DTOs;
 
 namespace FinManageAPI.Controllers;
 
@@ -28,11 +27,9 @@ public class UserController : ControllerBase
     }
 
     [HttpPost("create-new-user")]
-    public async Task<IActionResult> CreateUser(UserModel newUser)
+    public async Task<IActionResult> CreateUser(CreateUserDTO newUserDTO)
     {
-
-        await _iUserRepository.CreateNewPeopleAsync(newUser);
-
+        await _iUserRepository.CreateNewUserAsync(newUserDTO);
         return Ok();
     }
 }
