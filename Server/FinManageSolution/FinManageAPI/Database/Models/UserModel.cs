@@ -15,15 +15,21 @@ public class UserModel
     [BsonElement("password")]
     public string Password { get; set; } = String.Empty;
 
-    [BsonElement("firstname")]
+    [BsonElement("firstName")]
     public string FirstName { get; set; } = String.Empty;
 
-    [BsonElement("lastname")]
+    [BsonElement("lastName")]
     public string LastName { get; set; } = String.Empty;
 
-    [BsonElement("created_at")]
+    [BsonElement("createdAt")]
     public DateTime CreatedDate { get; set; } = DateTime.Today;
 
-    [BsonElement("udpated_at")]
+    [BsonElement("udpatedAt")]
     public DateTime UpdatedDate { get; set; } = DateTime.Today;
+
+    [BsonElement("salaryAmount")]
+    public double SalaryAmount { get; set; } = 0;
+
+    [BsonElement("spendLimitDaily")]
+    public double SpendLimitDaily { get; set; } = 0;
 }
